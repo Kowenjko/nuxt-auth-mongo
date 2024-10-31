@@ -1,6 +1,7 @@
-import mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
+import type { UserDocument } from '@/types'
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
 	{
 		email: {
 			type: String,
@@ -31,4 +32,4 @@ const userSchema = new mongoose.Schema(
 	{ timestamps: true }
 )
 
-export const User = mongoose.model('User', userSchema)
+export const User = model<UserDocument>('User', userSchema)

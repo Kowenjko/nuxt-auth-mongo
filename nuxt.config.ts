@@ -11,5 +11,7 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		mongodbUri: process.env.NUXT_MONGO_URI,
+		jwtSecret: process.env.NUXT_JWT_SECRET,
+		nodeEnv: process.env.NUXT_NODE_ENV,
 	},
 })
