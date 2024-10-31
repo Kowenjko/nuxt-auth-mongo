@@ -9,4 +9,7 @@ export default defineNuxtConfig({
 	pinia: {
 		storesDirs: ['./stores/**'],
 	},
+	runtimeConfig: {
+		mongodbUri: process.env.NUXT_MONGO_URI,
+	},
 })
