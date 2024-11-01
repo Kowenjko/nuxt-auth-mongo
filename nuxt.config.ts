@@ -16,5 +16,6 @@ export default defineNuxtConfig({
 		mailtrapToken: process.env.NUXT_MAILTRAP_TOKEN,
 		mailtrapEndpoint: process.env.NUXT_MAILTRAP_ENDPOINT,
 		resentApiKey: process.env.NUXT_RESEND_API_KEY,
+		clientUrl: process.env.NUXT_CLIENT_URL,
 	},
 })
