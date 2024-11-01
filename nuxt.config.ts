@@ -13,5 +13,7 @@ export default defineNuxtConfig({
 		mongodbUri: process.env.NUXT_MONGO_URI,
 		jwtSecret: process.env.NUXT_JWT_SECRET,
 		nodeEnv: process.env.NUXT_NODE_ENV,
+		mailtrapToken: process.env.NUXT_MAILTRAP_TOKEN,
+		mailtrapEndpoint: process.env.NUXT_MAILTRAP_ENDPOINT,
 	},
 })

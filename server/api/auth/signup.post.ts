@@ -1,5 +1,6 @@
 import { User } from '@/server/models/user.model'
 import bcryptjs from 'bcryptjs'
+import { sendVerificationEmail } from '@/server/utils/mailtrap'
 // import crypto from 'crypto'
 
 export default defineEventHandler(async (event) => {
@@ -28,6 +29,8 @@ export default defineEventHandler(async (event) => {
 
 		// jwt
 		generateTokenAndSetCookie(event, user._id)
+
+		await sendVerificationEmail(email, verificationToken)
 
 		return {
 			success: true,
