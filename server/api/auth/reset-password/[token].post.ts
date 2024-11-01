@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
 		await user.save()
 
 		await sendResetSuccessEmail(user.email)
+		return { success: true, message: 'Password reset successful' }
 	} catch (error) {
 		//@ts-ignore
 		errorHandler(400, error.message)
