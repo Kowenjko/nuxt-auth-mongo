@@ -1,6 +1,7 @@
 import { User } from '@/server/models/user.model'
 import bcryptjs from 'bcryptjs'
-import { sendVerificationEmail } from '@/server/utils/mailtrap'
+import { sendVerificationEmail } from '@/server/utils/mailtrap/mails'
+// import { sendVerificationEmail } from '@/server/utils/resend/resendEmails'
 // import crypto from 'crypto'
 
 export default defineEventHandler(async (event) => {

@@ -1,13 +1,13 @@
+import { mailtrapClient, sender } from '@/server/utils/mailtrap/mailtrap.config'
 import {
 	PASSWORD_RESET_REQUEST_TEMPLATE,
 	PASSWORD_RESET_SUCCESS_TEMPLATE,
 	VERIFICATION_EMAIL_TEMPLATE,
-	mailtrapClient,
-	sender,
-} from '@/server/utils/mailtrap'
+} from '@/server/utils/emailTemplates'
 
 export const sendVerificationEmail = async (email: string, verificationToken: string) => {
-	const recipient = [{ email }]
+	// const recipient = [{ email }]
+	const recipient = [{ email: 'ortoswt@gmail.com' }]
 
 	try {
 		const response = await mailtrapClient.send({
@@ -27,7 +27,8 @@ export const sendVerificationEmail = async (email: string, verificationToken: st
 }
 
 export const sendWelcomeEmail = async (email: string, name: string) => {
-	const recipient = [{ email }]
+	// const recipient = [{ email }]
+	const recipient = [{ email: 'ortoswt@gmail.com' }]
 
 	try {
 		const response = await mailtrapClient.send({
@@ -49,7 +50,8 @@ export const sendWelcomeEmail = async (email: string, name: string) => {
 }
 
 export const sendPasswordResetEmail = async (email: string, resetURL: string) => {
-	const recipient = [{ email }]
+	// const recipient = [{ email }]
+	const recipient = [{ email: 'ortoswt@gmail.com' }]
 
 	try {
 		const response = await mailtrapClient.send({
@@ -67,7 +69,8 @@ export const sendPasswordResetEmail = async (email: string, resetURL: string) =>
 }
 
 export const sendResetSuccessEmail = async (email: string) => {
-	const recipient = [{ email }]
+	// const recipient = [{ email }]
+	const recipient = [{ email: 'ortoswt@gmail.com' }]
 
 	try {
 		const response = await mailtrapClient.send({
