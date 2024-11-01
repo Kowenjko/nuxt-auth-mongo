@@ -8,6 +8,6 @@ export interface UserDocument extends Document {
 	isVerified: boolean
 	resetPasswordToken: string
 	resetPasswordExpiresAt: Date
-	verificationToken: string
-	verificationTokenExpiresAt: Date
+	verificationToken: string | undefined
+	verificationTokenExpiresAt: Date | undefined
 }

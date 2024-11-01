@@ -1,3 +1,4 @@
 export default defineEventHandler(async (event) => {
-  return 'Hello Nitro'
+	deleteCookie(event, 'token')
+	return { success: true, message: 'Logged out successfully' }
 })
