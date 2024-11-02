@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@vueuse/nuxt',
 		'@vueuse/motion/nuxt',
+		'nuxt-lucide-icons',
 	],
 	fonts: {
 		families: [{ name: 'Inter', provider: 'google' }],
@@ -17,6 +18,7 @@ export default defineNuxtConfig({
 	pinia: {
 		storesDirs: ['./stores/**'],
 	},
+	lucide: { namePrefix: 'Icon' },
 	runtimeConfig: {
 		mongodbUri: process.env.NUXT_MONGO_URI,
 		jwtSecret: process.env.NUXT_JWT_SECRET,

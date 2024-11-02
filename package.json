@@ -23,6 +23,7 @@
     "mailtrap": "^3.4.0",
     "mongoose": "^8.7.3",
     "nuxt": "^3.13.2",
+    "nuxt-lucide-icons": "^1.0.5",
     "nuxt-typed-router": "^3.7.0",
     "resend": "^4.0.1-alpha.0",
     "vue": "latest",
