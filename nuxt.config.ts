@@ -2,7 +2,15 @@
 export default defineNuxtConfig({
 	compatibilityDate: '2024-04-03',
 	devtools: { enabled: true },
-	modules: ['@nuxt/fonts', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-typed-router'],
+	modules: [
+		'@nuxt/fonts',
+		'@pinia/nuxt',
+		'@vueuse/nuxt',
+		'nuxt-typed-router',
+		'@nuxtjs/tailwindcss',
+		'@vueuse/nuxt',
+		'@vueuse/motion/nuxt',
+	],
 	fonts: {
 		families: [{ name: 'Inter', provider: 'google' }],
 	},
