@@ -4,4 +4,4 @@ const { resentApiKey } = useRuntimeConfig()
 
 export const clientResend = new Resend(resentApiKey)
 
-export const sender = 'onboarding@resend.dev'
+export const senderR = 'onboarding@resend.dev'

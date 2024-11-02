@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 const formData = reactive({ name: '', email: '', password: '' })
-const isLoading = false
 
-// const { signup, error, isLoading } = useAuthStore();
+const { signup, error, isLoading } = useAuthStore()
 const handleSignUp = async () => {
 	try {
-		// await signup(email, password, name);
+		await signup(formData)
 		navigateTo('/verify-email')
 	} catch (error) {
 		console.log(error)
@@ -33,7 +32,6 @@ const handleSignUp = async () => {
 				Create Account
 			</h2>
 			<form @submit.prevent="handleSignUp">
-				{{ formData.name }}
 				<Input type="text" placeholder="Full Name" v-model="formData.name">
 					<IconUser class="size-5 text-green-500" />
 				</Input>
@@ -43,7 +41,7 @@ const handleSignUp = async () => {
 				<Input type="password" placeholder="Password" v-model="formData.password">
 					<IconLock class="size-5 text-green-500" />
 				</Input>
-				<!-- <p v-if="error" class="text-red-500 font-semibold mt-2">{{ error }}</p> -->
+				<p v-if="error" class="text-red-500 font-semibold mt-2">{{ error }}</p>
 				<PasswordStrengthMeter :password="formData.password" />
 				<button
 					class="mt-5 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
