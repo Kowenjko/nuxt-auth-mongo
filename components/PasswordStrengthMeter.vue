@@ -34,15 +34,15 @@ const getStrengthText = computed(() => {
 		<div class="flex justify-between items-center mb-1">
 			<span class="text-xs text-gray-400">Password strength</span>
 			<span class="text-xs text-gray-400">{{ getStrengthText }}</span>
-			<div class="flex space-x-1">
-				<div
-					v-for="index in 4"
-					:key="index"
-					class="h-1 w-1/4 rounded-full transition-colors duration-300"
-					:class="[index < strength ? getColor : 'bg-gray-600']"
-				></div>
-				<PasswordCriteria :password="password" />
-			</div>
 		</div>
+		<div class="flex space-x-1">
+			<div
+				v-for="index in 4"
+				:key="index"
+				class="h-1 w-1/4 rounded-full transition-colors duration-300"
+				:class="[index <= strength ? getColor : 'bg-gray-600']"
+			/>
+		</div>
+		<PasswordCriteria :password="password" />
 	</div>
 </template>
