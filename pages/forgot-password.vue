@@ -11,7 +11,7 @@ const handleSubmit = async () => {
 </script>
 <template>
 	<Card title="Forgot Password" is-show-footer>
-		<form @submit.prevent="handleSubmit" v-if="isSubmitted">
+		<form @submit.prevent="handleSubmit" v-if="!isSubmitted">
 			<p class="text-gray-300 mb-6 text-center">
 				Enter your email address and we'll send you a link to reset your password.
 			</p>
