@@ -99,7 +99,6 @@ export const useAuthStore = defineStore('auth', () => {
 			return response
 		} catch (err) {
 			isAuthenticated.value = false
-		} finally {
 			isCheckingAuth.value = false
 		}
 	}

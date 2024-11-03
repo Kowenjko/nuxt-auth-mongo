@@ -1,5 +1,10 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const authStore = useAuthStore()
+
+onMounted(async () => await authStore.checkAuth())
+</script>
 <template>
+	<LoadingSpinner v-if="authStore.isCheckingAuth" />
 	<div
 		class="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900 flex items-center justify-center relative overflow-hidden"
 	>

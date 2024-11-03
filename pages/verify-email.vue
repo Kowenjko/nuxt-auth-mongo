@@ -3,7 +3,7 @@ const code = ref(['', '', '', '', '', ''])
 
 const inputRefs = useTemplateRef('input')
 
-const { error, isLoading, verifyEmail } = useAuthStore()
+const authStore = useAuthStore()
 
 const handleChange = (index: number) => {
 	const newCode = [...code.value]
@@ -49,7 +49,7 @@ const handleSubmit = async () => {
 	const verificationCode = code.value.join('')
 
 	try {
-		const response = await verifyEmail({ code: verificationCode })
+		const response = await authStore.verifyEmail({ code: verificationCode })
 		if (response) navigateTo('/')
 	} catch (error) {
 		console.log(error)
@@ -60,6 +60,8 @@ const handleSubmit = async () => {
 watch(code, async () => {
 	if (code.value.every((digit) => digit !== '')) await handleSubmit()
 })
+
+definePageMeta({ middleware: ['auth'] })
 </script>
 <template>
 	<div
@@ -93,16 +95,16 @@ watch(code, async () => {
 						class="w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-green-500 focus:outline-none"
 					/>
 				</div>
-				<p v-if="error" class="text-red-500 font-semibold mt-2">{{ error }}</p>
+				<p v-if="authStore.error" class="text-red-500 font-semibold mt-2">{{ authStore.error }}</p>
 				<button
 					v-motion
 					:initial="{ scale: 1 }"
 					:hovered="{ scale: 1.08 }"
 					:tapped="{ scale: 0.98 }"
-					:disabled="isLoading || code.some((digit) => !digit)"
+					:disabled="authStore.isLoading || code.some((digit) => !digit)"
 					class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50"
 				>
-					{{ isLoading ? 'Verifying...' : 'Verify Email' }}
+					{{ authStore.isLoading ? 'Verifying...' : 'Verify Email' }}
 				</button>
 			</form>
 		</div>
