@@ -30,17 +30,11 @@ const handleSubmit = async () => {
 				<Input type="email" placeholder="Email Address" required v-model="formData.email">
 					<IconMail class="size-5 text-green-500" />
 				</Input>
-				<button
-					type="submit"
-					v-motion
-					:initial="{ scale: 1 }"
-					:hovered="{ scale: 1.02 }"
-					:tapped="{ scale: 0.98 }"
-					class="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
-				>
+
+				<Button>
 					<IconLoader class="animate-spin mx-auto" :size="24" v-if="authStore.isLoading" />
 					<span v-else>Send Reset Link</span>
-				</button>
+				</Button>
 			</form>
 			<div v-else class="text-center">
 				<div

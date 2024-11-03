@@ -94,16 +94,10 @@ watch(code, async () => {
 					/>
 				</div>
 				<p v-if="authStore.error" class="text-red-500 font-semibold mt-2">{{ authStore.error }}</p>
-				<button
-					v-motion
-					:initial="{ scale: 1 }"
-					:hovered="{ scale: 1.08 }"
-					:tapped="{ scale: 0.98 }"
-					:disabled="authStore.isLoading || code.some((digit) => !digit)"
-					class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50"
-				>
+
+				<Button :disabled="authStore.isLoading || code.some((digit) => !digit)">
 					{{ authStore.isLoading ? 'Verifying...' : 'Verify Email' }}
-				</button>
+				</Button>
 			</form>
 		</div>
 	</div>
