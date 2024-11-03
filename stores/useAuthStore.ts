@@ -121,12 +121,21 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
-	const resetPassword = async ({ token, body }: { token: string; body: { password: string } }) => {
+	const resetPassword = async ({
+		token,
+		password,
+	}: {
+		token: string | number
+		password: string
+	}) => {
 		isLoading.value = true
 		error.value = null
 
 		try {
-			const response = await $fetch(`/api/auth/reset-password/${token}`, { method: 'POST', body })
+			const response = await $fetch(`/api/auth/reset-password/${token}`, {
+				method: 'POST',
+				body: { password },
+			})
 
 			if (response) {
 				// @ts-ignore
