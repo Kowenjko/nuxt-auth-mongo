@@ -4,7 +4,7 @@ const formData = reactive({ password: '', confirmPassword: '' })
 const { token } = useRoute().params
 
 const authStore = useAuthStore()
-const { $toast } = useNuxtApp()
+// const { $toast } = useNuxtApp()
 
 const handleSubmit = async () => {
 	if (formData.password !== formData.confirmPassword) {
@@ -14,13 +14,13 @@ const handleSubmit = async () => {
 
 	try {
 		await authStore.resetPassword({ token, password: formData.password })
-		$toast.success('Password reset successfully, redirecting to login page...')
+		// $toast.success('Password reset successfully, redirecting to login page...')
 		setTimeout(() => {
 			navigateTo('/login')
 		}, 2000)
 	} catch (error) {
 		console.error(error)
-		$toast.error('Error resetting password')
+		// $toast.error('Error resetting password')
 	}
 }
 </script>
