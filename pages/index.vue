@@ -1,8 +1,87 @@
 <script lang="ts" setup>
+import { formatDate } from '@/helpers/date'
+
+// const { user, logout } = useAuthStore()
+const authStore = useAuthStore()
+
+const getDate = computed(() =>
+	// @ts-ignore
+	new Date(authStore.user?.createdAt).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	})
+)
+
+const handleLogout = async () => await authStore.logout()
+
 useHead({ title: 'Dashboard' })
 definePageMeta({ middleware: ['default'] })
 </script>
 
 <template>
-	<div>index</div>
+	<div
+		class="max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800"
+		v-motion
+		:initial="{ opacity: 0, scale: 0.9 }"
+		:enter="{
+			opacity: 1,
+			scale: 1,
+			transition: { duration: 500 },
+		}"
+		:leave="{ opacity: 0, scale: 0.9 }"
+	>
+		<h2
+			class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-600 text-transparent bg-clip-text"
+		>
+			Dashboard
+		</h2>
+		<div class="space-y-6">
+			<div
+				class="p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700"
+				v-motion
+				:initial="{ opacity: 0, y: 20 }"
+				:enter="{ opacity: 1, y: 0, transition: { duration: 300 } }"
+			>
+				<h3 class="text-xl font-semibold text-green-400 mb-3">Profile Information</h3>
+				<p class="text-gray-300">Name: {{ authStore.user?.name }}</p>
+				<p class="text-gray-300">Email: {{ authStore.user?.email }}</p>
+			</div>
+
+			<div
+				class="p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700"
+				v-motion
+				:initial="{ opacity: 0, y: 20 }"
+				:enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+			>
+				<h3 class="text-xl font-semibold text-green-400 mb-3">Account Activity</h3>
+				<p class="text-gray-300">
+					<span className="font-bold">Joined: </span>
+					{{ getDate }}
+				</p>
+				<p class="text-gray-300">
+					<span class="font-bold">Last Login: </span>
+
+					{{ formatDate(authStore.user?.lastLogin) }}
+				</p>
+			</div>
+		</div>
+		<div
+			class="mt-4"
+			v-motion
+			:initial="{ opacity: 0, y: 20 }"
+			:enter="{ opacity: 1, y: 0, transition: { duration: 700 } }"
+		>
+			<button
+				@click="handleLogout"
+				v-motion
+				:initial="{ scale: 1 }"
+				:hovered="{ scale: 1.05 }"
+				:tapped="{ scale: 0.95 }"
+				class="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+			>
+				Logout
+			</button>
+		</div>
+	</div>
 </template>

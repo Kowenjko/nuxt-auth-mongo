@@ -17,15 +17,8 @@ definePageMeta({ middleware: ['auth'] })
 <template>
 	<div
 		v-motion
-		:initial="{
-			opacity: 0,
-			y: 20,
-		}"
-		:enter="{
-			opacity: 1,
-			y: 0,
-			transition: { duration: 1000 },
-		}"
+		:initial="{ opacity: 0, y: 20 }"
+		:enter="{ opacity: 1, y: 0, transition: { duration: 1000 } }"
 		class="max-w-md w-full bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
 	>
 		<div class="p-8">
