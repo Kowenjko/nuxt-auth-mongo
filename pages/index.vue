@@ -21,22 +21,7 @@ useHead({ title: 'Dashboard' })
 </script>
 
 <template>
-	<div
-		class="max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800"
-		v-motion
-		:initial="{ opacity: 0, scale: 0.9 }"
-		:enter="{
-			opacity: 1,
-			scale: 1,
-			transition: { duration: 500 },
-		}"
-		:leave="{ opacity: 0, scale: 0.9 }"
-	>
-		<h2
-			class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-600 text-transparent bg-clip-text"
-		>
-			Dashboard
-		</h2>
+	<Card title="Dashboard">
 		<div class="space-y-6">
 			<div
 				class="p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700"
@@ -75,5 +60,5 @@ useHead({ title: 'Dashboard' })
 		>
 			<Button type="button" @click="handleLogout"> Logout </Button>
 		</div>
-	</div>
+	</Card>
 </template>

@@ -4,13 +4,11 @@ const authStore = useAuthStore()
 onMounted(async () => {
 	await authStore.checkAuth()
 	if (authStore.isAuthenticated && authStore.user?.isVerified) navigateTo('/')
-	// if (!authStore.isAuthenticated) navigateTo('/login')
-	// if (!authStore.user?.isVerified) navigateTo('/verify-email')
 })
 </script>
 <template>
 	<LoadingSpinner v-if="authStore.isCheckingAuth" />
-	{{ !authStore.user?.isVerified }}
+
 	<div
 		class="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900 flex items-center justify-center relative overflow-hidden"
 	>

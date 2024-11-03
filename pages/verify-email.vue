@@ -62,43 +62,27 @@ watch(code, async () => {
 })
 </script>
 <template>
-	<div
-		class="max-w-md w-full bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
-	>
-		<div
-			v-motion
-			:initial="{ opacity: 0, y: -50 }"
-			:enter="{ opacity: 1, y: 0, transition: { duration: 1000 } }"
-			class="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-2xl p-8 w-full max-w-md"
-		>
-			<h2
-				class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text"
-			>
-				Verify Your Email
-			</h2>
-			<p class="text-center text-gray-300 mb-6">
-				Enter the 6-digit code sent to your email address.
-			</p>
-			<form @submit.prevent="handleSubmit" class="space-y-6">
-				<div class="flex justify-between">
-					<input
-						v-for="(digit, index) in code"
-						:key="index"
-						ref="input"
-						type="text"
-						maxLength="6"
-						:value="digit"
-						@input="handleChange(index)"
-						@keydown="handleKeyDown(index, $event)"
-						class="w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-green-500 focus:outline-none"
-					/>
-				</div>
-				<p v-if="authStore.error" class="text-red-500 font-semibold mt-2">{{ authStore.error }}</p>
+	<Card title="Verify Your Email">
+		<p class="text-center text-gray-300 mb-6">Enter the 6-digit code sent to your email address.</p>
+		<form @submit.prevent="handleSubmit" class="space-y-6">
+			<div class="flex justify-between">
+				<input
+					v-for="(digit, index) in code"
+					:key="index"
+					ref="input"
+					type="text"
+					maxLength="6"
+					:value="digit"
+					@input="handleChange(index)"
+					@keydown="handleKeyDown(index, $event)"
+					class="w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-green-500 focus:outline-none"
+				/>
+			</div>
+			<p v-if="authStore.error" class="text-red-500 font-semibold mt-2">{{ authStore.error }}</p>
 
-				<Button :disabled="authStore.isLoading || code.some((digit) => !digit)">
-					{{ authStore.isLoading ? 'Verifying...' : 'Verify Email' }}
-				</Button>
-			</form>
-		</div>
-	</div>
+			<Button :disabled="authStore.isLoading || code.some((digit) => !digit)">
+				{{ authStore.isLoading ? 'Verifying...' : 'Verify Email' }}
+			</Button>
+		</form>
+	</Card>
 </template>
