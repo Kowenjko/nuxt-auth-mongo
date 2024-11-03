@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 const authStore = useAuthStore()
 
-onMounted(async () => await authStore.checkAuth())
+onMounted(async () => {
+	await authStore.checkAuth()
+	if (authStore.isAuthenticated && authStore.user?.isVerified) navigateTo('/')
+	if (!authStore.isAuthenticated) navigateTo('/login')
+	if (!authStore.user?.isVerified) navigateTo('/verify-email')
+})
 </script>
 <template>
 	<LoadingSpinner v-if="authStore.isCheckingAuth" />

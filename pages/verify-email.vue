@@ -60,8 +60,6 @@ const handleSubmit = async () => {
 watch(code, async () => {
 	if (code.value.every((digit) => digit !== '')) await handleSubmit()
 })
-
-definePageMeta({ middleware: ['auth'] })
 </script>
 <template>
 	<div

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { formatDate } from '@/helpers/date'
 
-// const { user, logout } = useAuthStore()
 const authStore = useAuthStore()
 
 const getDate = computed(() =>
@@ -13,10 +12,12 @@ const getDate = computed(() =>
 	})
 )
 
-const handleLogout = async () => await authStore.logout()
+const handleLogout = async () => {
+	await authStore.logout()
+	navigateTo('/login')
+}
 
 useHead({ title: 'Dashboard' })
-definePageMeta({ middleware: ['default'] })
 </script>
 
 <template>
