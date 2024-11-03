@@ -3,6 +3,9 @@ import { formatDate } from '@/helpers/date'
 
 const authStore = useAuthStore()
 
+if (!authStore.isAuthenticated) navigateTo('/login')
+if (authStore.isAuthenticated && !authStore.user?.isVerified) navigateTo('/verify-email')
+
 const getDate = computed(() =>
 	// @ts-ignore
 	new Date(authStore.user?.createdAt).toLocaleDateString('en-US', {
